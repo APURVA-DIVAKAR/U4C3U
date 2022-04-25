@@ -1,5 +1,5 @@
 import react from "react";
-import { Routes, Route } from "react-router-dom";
+import {Routes,Route} from "react-router-dom"
 import { About } from "../pages/About";
 import Books from "../pages/Books";
 import { EditBookData } from "../pages/EditBookData";
@@ -17,6 +17,8 @@ const Mainroutes = () => {
       <Routes>
        {/* keep all the routes here  */}
        {/* /books/* route need to be protected */}
+       <Route path='/' element={<Home />} ></Route>
+       <Route path='/about' element={<About />} ></Route>
       </Routes>
     </>
   );

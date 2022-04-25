@@ -10,8 +10,14 @@ export const Grid = styled.div`
 
 const Books = () => {
   const [data, setData] = useState([]);
+  const getData = async() =>{
+    let res = await fetch(`http://localhost:8080/books`)
+    let books = await res.json();
+    setData
+  }
   useEffect(() => {
     // make a GET request to http://localhost:8080/books to get all the books data
+    get
   }, []);
 
   return (
