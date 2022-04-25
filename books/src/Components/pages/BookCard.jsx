@@ -1,11 +1,14 @@
 import React from "react";
+import { Outlet,useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import styled  from "styled-components";
 export const Flex = styled.div`
 //  add required style
+ 
 `;
-export const BookCard = (props) => {
-  const { id, title, isbn, pageCount, thumbnailUrl } = props;
+export const BookCard = ({value}) => {
+  const { id, title, isbn, pageCount, thumbnailUrl } = value;
+  //  const {idd} =useParams();
   return (
     <>
     <Link to = {`/books/${id}`}>
@@ -15,6 +18,9 @@ export const BookCard = (props) => {
         <h4>{isbn}</h4>
       </Flex>
     </Link>
+
+   
     </>
+
   );
 };

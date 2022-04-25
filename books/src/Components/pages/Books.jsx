@@ -5,7 +5,9 @@ import { BookCard } from "./BookCard";
 import styled, { css } from "styled-components";
 
 export const Grid = styled.div`
- add required style here
+//  add required style here
+ display:grid;
+ grid-template-columns:repeat(2,1fr)
 `;
 
 const Books = () => {
@@ -13,11 +15,12 @@ const Books = () => {
   const getData = async() =>{
     let res = await fetch(`http://localhost:8080/books`)
     let books = await res.json();
-    setData
+    console.log(books)
+    setData(...data,books)
   }
   useEffect(() => {
     // make a GET request to http://localhost:8080/books to get all the books data
-    get
+    getData();
   }, []);
 
   return (
@@ -27,6 +30,13 @@ const Books = () => {
         {/* {!!data && 
           // map thorugh the data and use <BookCard/> component to display each book
           } */}
+          {data.map((el)=>
+           {
+             return(
+              <BookCard key={el.id} value={el} />
+             )
+           }
+          )}
       </Grid>
     </>
   );

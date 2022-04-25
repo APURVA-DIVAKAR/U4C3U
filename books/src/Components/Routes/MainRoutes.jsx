@@ -1,6 +1,7 @@
 import react from "react";
 import {Routes,Route} from "react-router-dom"
 import { About } from "../pages/About";
+import { BookCard } from "../pages/BookCard";
 import Books from "../pages/Books";
 import { EditBookData } from "../pages/EditBookData";
 import { Home } from "../pages/Home";
@@ -17,8 +18,17 @@ const Mainroutes = () => {
       <Routes>
        {/* keep all the routes here  */}
        {/* /books/* route need to be protected */}
-       <Route path='/' element={<Home />} ></Route>
-       <Route path='/about' element={<About />} ></Route>
+        <Route path ='/'  element={<Home />}></Route>
+        <Route path ='/about' element={<About />}></Route>
+        <Route path ='/login' element={<Login/>}></Route>
+        <Route path ='/logout' element={<Logout/>}></Route>
+        <Route path ='/books/*' element={
+         <RequiredAuth>
+            <Books/>
+         </RequiredAuth>
+        }>
+          <Route path =':id' element={<SingleBook />}></Route>
+        </Route>
       </Routes>
     </>
   );

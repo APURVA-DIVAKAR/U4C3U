@@ -10,16 +10,19 @@ const AuthContextProvider = ({ children }) => {
     //  api request to reqres.in for the token
     let res = await fetch("https://reqres.in/api/login",{ 
       method: "POST",
-      header:{
-        "content-type": "application/json",
+      headers:{
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        
         "email": "eve.holt@reqres.in",
         "password": "cityslicka"
+      
       }),
     })
     let data = await res.json()
-    setToken(data.tokena)
+    console.log(data)
+    setToken(data.token)
   };
   const handleLogout = () => {
     //  set token back to " " once logged out
